@@ -1,0 +1,27 @@
+{
+  "name": "gridsome-plugin-google-sheets-post",
+  "version": "1.0.1",
+  "description": "Post data to your Google Sheets document from Gridsome website.",
+  "main": "gridsome.server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gridsome",
+    "gridsome-plugin",
+    "post",
+    "google",
+    "google-sheets",
+    "contact-form"
+  ],
+  "author": "Anastasiia Bakai @positivecrash",
+  "license": "BSD 3-Clause",
+  "files": [
+    "gridsome.client.js",
+    "gridsome.server.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/positivecrash/gridsome-plugin-google-sheets-post.git"
+  }
+}

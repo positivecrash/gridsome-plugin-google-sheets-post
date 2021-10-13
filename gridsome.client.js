@@ -14,13 +14,21 @@ export default function (Vue, options, { appOptions, router, head }) {
             return
         }
 
-        fetch(options.script, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: request
-        })
-        .then(() => { return true })
-        .catch(error => { return false })
+       try {
+            const response = await fetch(options.script, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: request
+            })
+
+            if(response.ok) {
+                return true
+            } else {
+                return 'Gridsome-plugin-google-sheets something wrong with the response'
+            }
+        } catch (error) {
+            return error.message
+        }
     }
 
     // Helper for using in app
