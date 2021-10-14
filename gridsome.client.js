@@ -1,4 +1,3 @@
-
 export default function (Vue, options, { appOptions, router, head }) {
 
 
@@ -6,29 +5,22 @@ export default function (Vue, options, { appOptions, router, head }) {
         throw new Error(`Gridsome-plugin-google-sheets is missing a required "script" option.`)
     }
 
-    function PostDataToSheet(request) {
-        console.log('post')
+    async function PostDataToSheet(request) {
 
         if(!request) {
             console.error('Gridsome-plugin-google-sheets is missing a required "request" in $PostGoogleSheets')
             return
         }
 
-       try {
-            const response = await fetch(options.script, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: request
-            })
+        let link = 'https://script.google.com/macros/s/' + options.script + '/exec'
 
-            if(response.ok) {
-                return true
-            } else {
-                return 'Gridsome-plugin-google-sheets something wrong with the response'
-            }
-        } catch (error) {
-            return error.message
-        }
+        fetch(link, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: request
+            })
+        .then(() => { return true})
+        .catch(error => { return error.message})
     }
 
     // Helper for using in app

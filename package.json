@@ -1,6 +1,6 @@
 {
   "name": "gridsome-plugin-google-sheets-post",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Post data to your Google Sheets document from Gridsome website.",
   "main": "gridsome.server.js",
   "scripts": {
