@@ -1,11 +1,42 @@
 {
-  "name": "gridsome-plugin-google-sheets-post",
-  "version": "1.0.3",
-  "description": "Post data to your Google Sheets document from Gridsome website.",
-  "main": "gridsome.server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "_from": "gridsome-plugin-google-sheets-post",
+  "_id": "gridsome-plugin-google-sheets-post@1.0.3",
+  "_inBundle": false,
+  "_integrity": "sha512-lxFqCi31bskGgvcJNaE6xh1R9D5K1YwY1kpWQtBd2eK+Tu5/Ej22kXBDT8rxiKBzh5sb7F9XkPgkjL4O91N9kg==",
+  "_location": "/gridsome-plugin-google-sheets-post",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "gridsome-plugin-google-sheets-post",
+    "name": "gridsome-plugin-google-sheets-post",
+    "escapedName": "gridsome-plugin-google-sheets-post",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
   },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/gridsome-plugin-google-sheets-post/-/gridsome-plugin-google-sheets-post-1.0.3.tgz",
+  "_shasum": "0cb6d40e11219cba7d1dafe77ea78bd55cf0bd3d",
+  "_spec": "gridsome-plugin-google-sheets-post",
+  "_where": "/Users/nicetea/Projects/Airalab/Frontend/robonomics.academy",
+  "author": {
+    "name": "Anastasiia Bakai @positivecrash"
+  },
+  "bugs": {
+    "url": "https://github.com/positivecrash/gridsome-plugin-google-sheets-post/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Post data to your Google Sheets document from Gridsome website.",
+  "files": [
+    "gridsome.client.js",
+    "gridsome.server.js"
+  ],
+  "homepage": "https://github.com/positivecrash/gridsome-plugin-google-sheets-post#readme",
   "keywords": [
     "gridsome",
     "gridsome-plugin",
@@ -14,14 +45,18 @@
     "google-sheets",
     "contact-form"
   ],
-  "author": "Anastasiia Bakai @positivecrash",
   "license": "BSD 3-Clause",
-  "files": [
-    "gridsome.client.js",
-    "gridsome.server.js"
-  ],
+  "main": "gridsome.server.js",
+  "name": "gridsome-plugin-google-sheets-post",
   "repository": {
     "type": "git",
-    "url": "https://github.com/positivecrash/gridsome-plugin-google-sheets-post.git"
+    "url": "git+https://github.com/positivecrash/gridsome-plugin-google-sheets-post.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.3",
+  "dependencies": {
+    "vue-recaptcha": "1.3.0"
   }
 }

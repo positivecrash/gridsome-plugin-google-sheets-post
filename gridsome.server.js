@@ -1,17 +1,9 @@
-class PostData {
+class gsPost {
 
-	/* Default plugin options */
-	static defaultOptions () {
-		return {
-			script: ''
-		}
-	}
-
-	constructor (api, options) {
+	constructor (api) {
 	    this.api = api
-	    this.options = options	
 	}
 
 }
 
-module.exports = PostData
+module.exports = gsPost
