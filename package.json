@@ -1,6 +1,5 @@
 {
   "_from": "gridsome-plugin-google-sheets-post",
-  "_id": "gridsome-plugin-google-sheets-post@1.0.3",
   "_inBundle": false,
   "_integrity": "sha512-lxFqCi31bskGgvcJNaE6xh1R9D5K1YwY1kpWQtBd2eK+Tu5/Ej22kXBDT8rxiKBzh5sb7F9XkPgkjL4O91N9kg==",
   "_location": "/gridsome-plugin-google-sheets-post",
@@ -55,7 +54,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.3",
+  "version": "2.0.0",
   "dependencies": {
     "vue-recaptcha": "1.3.0"
   }
