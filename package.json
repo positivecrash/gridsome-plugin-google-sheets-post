@@ -33,7 +33,8 @@
   "description": "Post data to your Google Sheets document from Gridsome website.",
   "files": [
     "gridsome.client.js",
-    "gridsome.server.js"
+    "gridsome.server.js",
+    "Form.vue"
   ],
   "homepage": "https://github.com/positivecrash/gridsome-plugin-google-sheets-post#readme",
   "keywords": [
