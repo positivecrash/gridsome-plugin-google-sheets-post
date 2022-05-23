@@ -3,6 +3,20 @@
 - No limitations for form element.
 - Built-in invisible captcha (vue-recaptcha)
 
+## Get started
+
+### `gridsome.config.js`
+
+```js
+module.exports = {
+  plugins: [
+    {
+      use: "gridsome-plugin-google-sheets-post"
+    }
+  ]
+}
+```
+
 ## Usage 1
 
 With built-in submit events, captcha and auto forming request
