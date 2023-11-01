@@ -33,14 +33,14 @@ export default {
     captchaStyle: {
       type: Object,
       required: false,
-      default: {
+      default: () => ({
         width: 100,
         height: 15,
         textBaseline: 'top',
         font: '15px Arial',
         textAlign: 'left',
         fillStyle: '#ddd'
-      }
+      })
     }
   },
 
