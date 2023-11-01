@@ -23,7 +23,7 @@ With built-in submit events, captcha and auto forming request
 
 Your Vue template:
 ```html
-<gsp-form :gscriptID="gscript" :captchaID="captcha">
+<gsp-form :gscriptID="gscript">
     <input type="text" placeholder="Your data" data-gsp-name="data-name" :data-gsp-data="data" v-model="data"/>
     <button>Send</button>
 </gsp-form>
@@ -36,7 +36,6 @@ export default {
       return {
        
         gscript:  process.env.GRIDSOME_GSCRIPTID,
-        captcha:  process.env.GRIDSOME_CAPTCHAID,
 
         data: ''
 
@@ -195,10 +194,43 @@ function sendEmail(data) {
 ```
 
 
-## Setting up recaptcha
+## Setting up captcha
 
-1. Create [Google Recaptcha](https://www.google.com/recaptcha/) for your website V2
-2. Copy site key and setup [environmental variable](https://gridsome.org/docs/environment-variables/)
+[Captcha](https://github.com/robiveli/js-captcha) is ready for use without any additional settings but you can change captcha styling: 
+
+
+Your Vue template:
+```html
+<gsp-form :gscriptID="gscript" :captchaStyle="captchaStyle">
+    <input type="text" placeholder="Your data" data-gsp-name="data-name" :data-gsp-data="data" v-model="data"/>
+    <button>Send</button>
+</gsp-form>
+```
+
+```js
+<script>
+export default {
+  
+    data() {
+      return {
+       
+        gscript:  process.env.GRIDSOME_GSCRIPTID,
+        captchaStyle: {     
+          width: 100,
+          height: 25,
+          textBaseline: 'top',
+          font: '25px Arial',
+          textAlign: 'left',
+          fillStyle: '#333'
+        }
+
+        data: ''
+
+      }
+    }
+}
+</script>
+```
 
 
 ## TODO
