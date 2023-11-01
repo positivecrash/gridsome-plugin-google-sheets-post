@@ -1,7 +1,7 @@
 - This plugin for posting any data from form to Google Sheets.
 - Useful for contact forms etc.
 - No limitations for form element.
-- Built-in invisible captcha (vue-recaptcha)
+- Built-in [captcha](https://github.com/robiveli/js-captcha)
 
 ## Get started
 
