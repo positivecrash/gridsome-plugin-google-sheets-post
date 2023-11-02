@@ -189,7 +189,6 @@ mounted() {
   this.allTextareas =  this.$refs.form.querySelectorAll('textarea');
 
   this.allInputs.forEach(i => {
-    console.log(i.getAttribute('type'))
     if (i.getAttribute('type') !== 'hidden') {
       allFormElements.push(i);
     }
