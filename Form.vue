@@ -110,7 +110,7 @@ computed: {
   acceptableTime() {
 
     if(this.formElementsCount === 1) {
-      return 420
+      return 450
     }
 
     if (this.formElementsCount < 3) {
@@ -174,6 +174,7 @@ methods: {
     if(this.$refs.form && elements) {
       elements.forEach(el => {
         if(e.target === el) {
+          this.formElementsCount = this.formElementsCount + 1;
           this.startInteractingWithForm();
         }
       })
@@ -183,26 +184,8 @@ methods: {
 
 mounted() {
 
-  let allFormElements = [];
-
   this.allInputs =  this.$refs.form.querySelectorAll('input');
   this.allTextareas =  this.$refs.form.querySelectorAll('textarea');
-
-  this.allInputs.forEach(i => {
-    if (i.getAttribute('type') !== 'hidden') {
-      allFormElements.push(i);
-    }
-  })
-
-  this.allTextareas.forEach(i => {
-    if (i.getAttribute('type') !== 'hidden') {
-      allFormElements.push(i);
-    }
-  })
-
-
-  // - 1 to remove honeypot from the count
-  this.formElementsCount = allFormElements.length - 1;
   
   window.addEventListener('click', (e) => {
     this.detectFormInteraction(e, this.allInputs);
@@ -213,6 +196,7 @@ mounted() {
 
 beforeDestroy() {
   this.time = null;
+  this.formElementsCount = 0;
   window.removeEventListener('click', (e) => {
     this.detectFormInteraction(e, this.allInputs);
     this.detectFormInteraction(e, this.allTextareas);
