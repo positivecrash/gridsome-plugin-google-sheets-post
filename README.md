@@ -1,7 +1,7 @@
 - This plugin for posting any data from form to Google Sheets.
 - Useful for contact forms etc.
 - No limitations for form element.
-- Built-in [captcha](https://github.com/robiveli/js-captcha)
+- Built-in [hCaptcha](https://github.com/hCaptcha/vue-hcaptcha/tree/master)
 
 ## Get started
 
@@ -23,7 +23,7 @@ With built-in submit events, captcha and auto forming request
 
 Your Vue template:
 ```html
-<gsp-form :gscriptID="gscript">
+<gsp-form :gscriptID="gscript" :siteKey="siteKey">
     <input type="text" placeholder="Your data" data-gsp-name="data-name" :data-gsp-data="data" v-model="data"/>
     <button>Send</button>
 </gsp-form>
@@ -36,6 +36,7 @@ export default {
       return {
        
         gscript:  process.env.GRIDSOME_GSCRIPTID,
+        siteKey:  process.env.GRIDSOME_SITEKEY,
 
         data: ''
 
@@ -60,6 +61,7 @@ export default {
       return {
        
         gscript:  process.env.GRIDSOME_GSCRIPTID,
+        siteKey:  process.env.GRIDSOME_SITEKEY,
 
         data1: '',
         data2: ''
@@ -192,47 +194,6 @@ function sendEmail(data) {
   }
 }
 ```
-
-
-## Setting up captcha
-
-[Captcha](https://github.com/robiveli/js-captcha) is ready for use without any additional settings but you can change captcha styling: 
-
-
-Your Vue template:
-```html
-<gsp-form :gscriptID="gscript" :captchaStyle="captchaStyle">
-    <input type="text" placeholder="Your data" data-gsp-name="data-name" :data-gsp-data="data" v-model="data"/>
-    <button>Send</button>
-</gsp-form>
-```
-
-```js
-<script>
-export default {
-  
-    data() {
-      return {
-       
-        gscript:  process.env.GRIDSOME_GSCRIPTID,
-        captchaStyle: {     
-          width: 100,
-          height: 25,
-          textBaseline: 'top',
-          font: '25px Arial',
-          textAlign: 'left',
-          fillStyle: '#333'
-        }
-
-        data: ''
-
-      }
-    }
-}
-</script>
-```
-
-
 ## TODO
 
 - Move to another captcha
