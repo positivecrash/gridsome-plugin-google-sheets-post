@@ -23,7 +23,7 @@ With built-in submit events, captcha and auto forming request
 
 Your Vue template:
 ```html
-<gsp-form :gscriptID="gscript" :siteKey="siteKey">
+<gsp-form :gscriptID="gscript" :siteKey="siteKey" @gsp-beforesubmit="beforeSubmit" @gsp-onsubmit="onSubmit">
     <input type="text" placeholder="Your data" data-gsp-name="data-name" :data-gsp-data="data" v-model="data"/>
     <button>Send</button>
 </gsp-form>
@@ -41,6 +41,21 @@ export default {
         data: ''
 
       }
+    },
+
+    methods: {
+        beforeSubmit() {
+          /* do smth here for ui, e.g. show loading */
+        },
+
+        onSubmit(responce) {
+          /* this function only for additional actions, form submitting in this example is executed by built-in component */
+          if(responce === 'success') {
+            /* show success */
+          } else {
+            /* show error */
+          }
+        }
     }
 }
 </script>

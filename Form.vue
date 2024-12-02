@@ -1,5 +1,5 @@
 <template>
-  <form ref="form"  @submit.prevent="onSubmit" :class="{'captcha-error': isError}">
+  <form v-bind="$attrs" @submit.prevent="onSubmit" :class="{'captcha-error': isError}">
 
       <vue-hcaptcha
         ref="invisibleHcaptcha"
@@ -58,14 +58,14 @@ metaInfo: {
 
 methods: {
   onSubmit: function () {
-    console.log('Submitting the invisible hCaptcha', this.$refs.invisibleHcaptcha);
+    this.$emit('gsp-beforesubmit');
     this.$refs.invisibleHcaptcha.execute();
   },
 
   onVerify: async function (token, ekey) {
-    var 
+    let 
       response = '',
-      data = document.querySelectorAll('[data-gsp-data]');
+      data = this.$el.querySelectorAll('[data-gsp-data]');
 
     data.forEach(function(item, index, array) {
       if (response != '') {
@@ -75,13 +75,13 @@ methods: {
     });
 
     this.verified = true;
-    console.log(token)
-    await this.$gspPostForm(this.gscriptID, response)
+    await this.$gspPostForm(this.gscriptID, response);
+    this.$emit('gsp-onsubmit', this.$response);
   },
 
 
   onError: function () {
-    console.log('captcha error')
+    console.log('Submitting of the hCaptcha error')
     this.token = null;
     this.eKey = null;
     this.isError = true;
@@ -91,5 +91,3 @@ methods: {
 }
 
 </script>
-
-<style></style>
