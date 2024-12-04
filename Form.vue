@@ -58,8 +58,8 @@ metaInfo: {
 
 methods: {
   onSubmit: function () {
-    this.$emit('gsp-beforesubmit');
     this.$refs.invisibleHcaptcha.execute();
+    this.$emit('gsp-beforesubmit', this.$response);
   },
 
   onVerify: async function (token, ekey) {
@@ -76,12 +76,12 @@ methods: {
 
     this.verified = true;
     await this.$gspPostForm(this.gscriptID, response);
-    this.$emit('gsp-onsubmit', this.$response);
+    this.$emit('gsp-onsubmit', this.$response, response);
   },
 
 
   onError: function () {
-    console.log('Submitting of the hCaptcha error')
+    this.$response = 'captcha error';
     this.token = null;
     this.eKey = null;
     this.isError = true;

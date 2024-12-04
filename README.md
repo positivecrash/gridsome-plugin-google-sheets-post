@@ -46,10 +46,19 @@ export default {
     methods: {
         beforeSubmit() {
           /* do smth here for ui, e.g. show loading */
+
+          if(responce === 'captcha error') {
+              /* Captcha error handling. Usually this error can occur when user has no internet connection */
+              return;
+          }
         },
 
-        onSubmit(responce) {
+        onSubmit(responce, submition) {
           /* this function only for additional actions, form submitting in this example is executed by built-in component */
+
+          /* responce - how was submition done. */
+          /* submition - posted submition, might be usuful for a code debugging */
+
           if(responce === 'success') {
             /* show success */
           } else {
