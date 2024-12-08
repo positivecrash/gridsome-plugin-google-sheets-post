@@ -1,5 +1,5 @@
 <template>
-  <form v-bind="$attrs" @submit.prevent="onSubmit" :class="{'captcha-error': isError}">
+  <form v-bind="$attrs" @submit.prevent="onSubmit">
 
       <vue-hcaptcha
         ref="invisibleHcaptcha"
@@ -41,8 +41,7 @@ components: {
 
 data() {
   return {
-    isError: false,
-    verified: false,
+    captchaError: false,
     token: null,
     eKey: null,
   }
@@ -59,13 +58,12 @@ metaInfo: {
 methods: {
   onSubmit: function () {
     this.$refs.invisibleHcaptcha.execute();
-    this.$emit('gsp-beforesubmit', this.$response);
+    this.$emit('gsp-beforesubmit');
   },
 
   onVerify: async function (token, ekey) {
-    let 
-      response = '',
-      data = this.$el.querySelectorAll('[data-gsp-data]');
+    var response = '';
+    var data = this.$el.querySelectorAll('[data-gsp-data]');
 
     data.forEach(function(item, index, array) {
       if (response != '') {
@@ -74,17 +72,30 @@ methods: {
       response += item.dataset.gspName + '=' + encodeURIComponent(item.dataset.gspData)
     });
 
-    this.verified = true;
-    await this.$gspPostForm(this.gscriptID, response);
-    this.$emit('gsp-onsubmit', this.$response, response);
+    fetch( 'https://script.google.com/macros/s/' + this.gscriptID + '/exec',
+    {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: response
+    }).then((responce) => {
+            responce.json().then((data) => {
+                this.$emit('gsp-onsubmit', data, response);
+                return data;
+            }).catch((err) => {
+                this.$emit('gsp-onsubmit', err, response);
+                return err;
+            }) 
+        }).catch((err) => {
+            this.$emit('gsp-onsubmit', err, response);
+            return err;
+        }) 
   },
 
 
   onError: function () {
-    this.$response = 'captcha error';
     this.token = null;
     this.eKey = null;
-    this.isError = true;
+    this.$emit('gsp-oncaptchanotverified');
   }
 },
 

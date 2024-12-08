@@ -17,13 +17,13 @@ module.exports = {
 }
 ```
 
-## Usage 1
+## Usage
 
-With built-in submit events, captcha and auto forming request
+With built-in submit events, hCaptcha and auto forming request
 
 Your Vue template:
 ```html
-<gsp-form :gscriptID="gscript" :siteKey="siteKey" @gsp-beforesubmit="beforeSubmit" @gsp-onsubmit="onSubmit">
+<gsp-form :gscriptID="gscript" :siteKey="siteKey" @gsp-beforesubmit="beforeSubmit" @gsp-onsubmit="onSubmit" @gsp-oncaptchanotverified="captchaError">
     <input type="text" placeholder="Your data" data-gsp-name="data-name" :data-gsp-data="data" v-model="data"/>
     <button>Send</button>
 </gsp-form>
@@ -44,6 +44,10 @@ export default {
     },
 
     methods: {
+        captchaError() {
+          /* react on captcha not verified */
+        },
+
         beforeSubmit() {
           /* do smth here for ui, e.g. show loading */
 
@@ -72,37 +76,6 @@ export default {
 
 Watch result with `$response`
 
-
-## Usage 2
-
-You can use only function for sending data to Google Sheet `$gspPostForm`
-
-```js
-<script>
-export default {
-  
-    data() {
-      return {
-       
-        gscript:  process.env.GRIDSOME_GSCRIPTID,
-        siteKey:  process.env.GRIDSOME_SITEKEY,
-
-        data1: '',
-        data2: ''
-
-      }
-    },
-
-    methods: {
-        onSubmit: async function () {
-            let response = 'data1=' + encodeURIComponent(this.data1) + '&data2=' + encodeURIComponent(this.data2)
-            await this.$gspPostForm(this.gscript, response)
-            }
-        }
-    }
-}
-</script>
-```
 
 ## Forming Google Sheet
 
